@@ -1,0 +1,64 @@
+<header class="app-header">
+    <nav class="header-nav">
+        <div class="header-container">
+
+            <a routerLink="/" class="header-logo" aria-label="Fluxa Home">
+                <svg class="header-logo-icon" width="30" height="30" viewBox="0 0 40 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" stroke="url(#logoGrad)" stroke-width="2.5" fill="none"
+                        opacity="0.3" />
+                    <path d="M10 20C10 20 13.5 13 17 13C20.5 13 19.5 27 23 27C26.5 27 30 20 30 20"
+                        stroke="url(#logoGrad)" stroke-width="2.8" stroke-linecap="round" fill="none" />
+                    <circle cx="20" cy="20" r="3" fill="url(#logoGrad)" opacity="0.9" />
+                    <defs>
+                        <linearGradient id="logoGrad" x1="8" y1="8" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#3B82F6" />
+                            <stop offset="100%" stop-color="#818CF8" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="header-logo-text">Fluxa</span>
+            </a>
+
+            <ul class="header-links">
+                <li><a routerLink="/inicio" class="header-link">Inicio</a></li>
+                <li><a routerLink="/licenses" class="header-link">Licencias</a></li>
+                <li><a routerLink="/plans" class="header-link">Planes</a></li>
+                <li><a routerLink="/contact" class="header-link">Contacto</a></li>
+                <li><a routerLink="/about" class="header-link">Sobre Nosotros</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a routerLink="/login" class="header-link header-link-login">Iniciar sesión</a>
+                <a routerLink="/register" class="header-btn-primary">
+                    Comenzar gratis
+                    <span class="header-btn-dot"></span>
+                </a>
+            </div>
+
+            <button class="header-mobile-toggle" aria-label="Abrir menú" (click)="toggleMenu()">
+                <i class="bi" [ngClass]="isMenuOpen ? 'bi-x-lg' : 'bi-list'"></i>
+            </button>
+
+        </div>
+
+        @if (isMenuOpen) {
+        <div class="header-mobile-menu">
+            <ul class="header-mobile-links">
+                <li><a routerLink="/inicio" (click)="toggleMenu()">Inicio</a></li>
+                <li><a routerLink="/licenses" (click)="toggleMenu()">Licencias</a></li>
+                <li><a routerLink="/plans" (click)="toggleMenu()">Planes</a></li>
+                <li><a routerLink="/contact" (click)="toggleMenu()">Contacto</a></li>
+                <li><a routerLink="/about" (click)="toggleMenu()">Sobre Nosotros</a></li>
+            </ul>
+            <div class="header-mobile-actions">
+                <a routerLink="/login" class="header-mobile-login" (click)="toggleMenu()">Iniciar sesión</a>
+                <a routerLink="/register" class="header-mobile-cta" (click)="toggleMenu()">
+                    Comenzar gratis
+                    <span class="header-btn-dot"></span>
+                </a>
+            </div>
+        </div>
+        }
+    </nav>
+</header>

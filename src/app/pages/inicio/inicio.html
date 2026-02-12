@@ -1,0 +1,724 @@
+<section class="hero" id="hero">
+    <div class="container hero-content">
+        <!-- Small announcement pill -->
+        <div class="hero-announce reveal-item">
+            <span class="hero-announce-badge">Nuevo</span>
+            <span>Reportes inteligentes con IA — </span>
+        </div>
+
+        <h1 class="hero-title reveal-item">
+            Finanzas personales<br />
+            que realmente funcionan.
+        </h1>
+
+        <p class="hero-subtitle reveal-item">
+            Registra ingresos, controla gastos y alcanza tus metas de ahorro.
+            Todo desde un solo lugar, diseñado para personas reales.
+        </p>
+
+        <div class="hero-cta reveal-item">
+            <button class="btn btn-primary-glow" (click)="openModal('signup')">
+                Comenzar gratis
+                <i class="bi bi-arrow-right"></i>
+            </button>
+            <a href="#features" class="btn btn-outline-light-custom">
+                Cómo funciona
+            </a>
+        </div>
+
+        <!-- Dashboard Mock — realistic UI -->
+        <div class="hero-dashboard reveal-item">
+            <div class="hero-dashboard-inner">
+                <div class="dash-topbar">
+                    <span class="dash-dot dash-dot--red"></span>
+                    <span class="dash-dot dash-dot--yellow"></span>
+                    <span class="dash-dot dash-dot--green"></span>
+                    <span class="dash-topbar-title">Luxa</span>
+                    <span class="dash-topbar-right">
+                        <i class="bi bi-bell"></i>
+                        <span class="dash-avatar-sm">CP</span>
+                    </span>
+                </div>
+                <div class="dash-layout">
+                    <!-- Sidebar -->
+                    <aside class="dash-sidebar">
+                        <div class="dash-sidebar-brand">
+                            <i class="bi bi-wallet2"></i>
+                            <span>Luxa</span>
+                        </div>
+                        <div class="dash-sidebar-label">MENÚ</div>
+                        <div class="dash-sidebar-item active"><i class="bi bi-grid-1x2-fill"></i> Resumen</div>
+                        <div class="dash-sidebar-item"><i class="bi bi-arrow-left-right"></i> Movimientos</div>
+                        <div class="dash-sidebar-item"><i class="bi bi-pie-chart-fill"></i> Presupuestos</div>
+                        <div class="dash-sidebar-item"><i class="bi bi-bar-chart-fill"></i> Reportes</div>
+                        <div class="dash-sidebar-item"><i class="bi bi-gear"></i> Ajustes</div>
+                        <div class="dash-sidebar-item"><i class="bi bi-question-circle"></i> Ayuda</div>
+                    </aside>
+                    <!-- Main -->
+                    <div class="dash-main">
+                        <div class="dash-greeting">
+                            <div>
+                                <span class="dash-greeting-hi">Buenos días, <strong>Camila</strong> 👋</span>
+                                <span class="dash-greeting-sub">Aquí tienes tu resumen financiero</span>
+                            </div>
+                            <span class="dash-date mono-num">Feb 12, 2026</span>
+                        </div>
+                        <!-- Top stat cards -->
+                        <div class="dash-card-row">
+                            <div class="dash-mini-card">
+                                <div class="dash-mini-top">
+                                    <span class="dash-mini-label">Ingresos</span>
+                                    <i class="bi bi-arrow-up-right dash-mini-icon text-success-custom"></i>
+                                </div>
+                                <span class="dash-mini-value text-success-custom mono-num">$4,250.00</span>
+                                <span class="dash-mini-change text-success-custom"><i class="bi bi-caret-up-fill"></i>
+                                    12%</span>
+                            </div>
+                            <div class="dash-mini-card">
+                                <div class="dash-mini-top">
+                                    <span class="dash-mini-label">Gastos</span>
+                                    <i class="bi bi-arrow-down-right dash-mini-icon text-danger-custom"></i>
+                                </div>
+                                <span class="dash-mini-value text-danger-custom mono-num">$2,180.50</span>
+                                <span class="dash-mini-change text-success-custom"><i class="bi bi-caret-down-fill"></i>
+                                    8%</span>
+                            </div>
+                            <div class="dash-mini-card">
+                                <div class="dash-mini-top">
+                                    <span class="dash-mini-label">Ahorro</span>
+                                    <i class="bi bi-piggy-bank dash-mini-icon text-accent"></i>
+                                </div>
+                                <span class="dash-mini-value text-accent mono-num">$2,069.50</span>
+                                <span class="dash-mini-change" style="color:var(--text-secondary)">Meta: $2,500</span>
+                            </div>
+                        </div>
+                        <!-- Two-column: Chart + Transactions -->
+                        <div class="dash-two-col">
+                            <!-- Mini area chart -->
+                            <div class="dash-chart-card">
+                                <div class="dash-chart-header">
+                                    <span class="dash-chart-title">Tendencia de gastos</span>
+                                    <span class="dash-chart-period mono-num">Últimos 7 días</span>
+                                </div>
+                                <svg viewBox="0 0 320 80" class="dash-area-svg">
+                                    <defs>
+                                        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25" />
+                                            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.02" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path
+                                        d="M0,60 C20,55 40,45 80,48 C120,51 140,30 180,25 C220,20 260,35 300,18 L320,12 L320,80 L0,80 Z"
+                                        fill="url(#areaGrad)" />
+                                    <path
+                                        d="M0,60 C20,55 40,45 80,48 C120,51 140,30 180,25 C220,20 260,35 300,18 L320,12"
+                                        stroke="#3B82F6" stroke-width="2" fill="none" />
+                                    <circle cx="300" cy="18" r="3.5" fill="#3B82F6" />
+                                </svg>
+                                <div class="dash-chart-labels mono-num">
+                                    <span>Lun-Mie</span><span>-Mar-Jue-</span><span>Vie-Sab</span><span>-Dom</span>
+                                </div>
+                            </div>
+                            <!-- Recent transactions -->
+                            <div class="dash-txn-card">
+                                <div class="dash-txn-header">
+                                    <span class="dash-txn-title">Últimos movimientos</span>
+                                    <a class="dash-txn-link">Ver todos</a>
+                                </div>
+                                <div class="dash-txn-item">
+                                    <span class="dash-txn-dot" style="background:var(--danger)"></span>
+                                    <div class="dash-txn-info">
+                                        <span class="dash-txn-name">Netflix</span>
+                                        <span class="dash-txn-cat">Entretenimiento</span>
+                                    </div>
+                                    <span class="dash-txn-amount mono-num text-danger-custom">-$15.99</span>
+                                </div>
+                                <div class="dash-txn-item">
+                                    <span class="dash-txn-dot" style="background:var(--success)"></span>
+                                    <div class="dash-txn-info">
+                                        <span class="dash-txn-name">Nómina</span>
+                                        <span class="dash-txn-cat">Salario</span>
+                                    </div>
+                                    <span class="dash-txn-amount mono-num text-success-custom">+$2,450.00</span>
+                                </div>
+                                <div class="dash-txn-item">
+                                    <span class="dash-txn-dot" style="background:#FBBF24"></span>
+                                    <div class="dash-txn-info">
+                                        <span class="dash-txn-name">Supermercado Éxito</span>
+                                        <span class="dash-txn-cat">Alimentación</span>
+                                    </div>
+                                    <span class="dash-txn-amount mono-num text-danger-custom">-$87.30</span>
+                                </div>
+                                <div class="dash-txn-item">
+                                    <span class="dash-txn-dot" style="background:var(--accent2)"></span>
+                                    <div class="dash-txn-info">
+                                        <span class="dash-txn-name">Uber</span>
+                                        <span class="dash-txn-cat">Transporte</span>
+                                    </div>
+                                    <span class="dash-txn-amount mono-num text-danger-custom">-$12.50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="hero-trust reveal-item">
+            <div class="trust-item">
+                <strong class="mono-num counter" data-target="12450">0</strong><span>+ usuarios activos</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <strong class="mono-num">4.9</strong><span>/5 valoración</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <i class="bi bi-shield-lock-fill"></i><span>Encriptación bancaria</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 2. SOCIAL PROOF / STATS ===== -->
+<section class="stats-section" id="stats">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-6 col-lg-3 reveal-item">
+                <div class="stat-card">
+                    <i class="bi bi-people-fill stat-icon"></i>
+                    <span class="stat-number mono-num counter" data-target="12450">0</span>
+                    <span class="stat-label">Usuarios activos</span>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 reveal-item" style="--delay:.1s">
+                <div class="stat-card">
+                    <i class="bi bi-piggy-bank-fill stat-icon"></i>
+                    <span class="stat-number mono-num">$<span class="counter" data-target="2500000"
+                            data-prefix="true">0</span></span>
+                    <span class="stat-label">Ahorrados por usuarios</span>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 reveal-item" style="--delay:.2s">
+                <div class="stat-card">
+                    <i class="bi bi-star-fill stat-icon"></i>
+                    <span class="stat-number mono-num">4.9<small>/5</small></span>
+                    <span class="stat-label">Rating promedio</span>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 reveal-item" style="--delay:.3s">
+                <div class="stat-card">
+                    <i class="bi bi-shield-check stat-icon"></i>
+                    <span class="stat-number mono-num">99.9%</span>
+                    <span class="stat-label">Uptime garantizado</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 3. FEATURES ===== -->
+<section class="features-section" id="features">
+    <div class="container">
+        <div class="section-header text-center reveal-item">
+            <h2 class="section-title">Todo lo que necesitas en un solo lugar</h2>
+            <p class="section-subtitle">Herramientas poderosas con la simplicidad que mereces</p>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <!-- Feature 1 -->
+            <div class="col-md-6 col-lg-4 reveal-item">
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <i class="bi bi-activity"></i>
+                    </div>
+                    <h3 class="feature-title">Tracking Automático</h3>
+                    <p class="feature-desc">Visualiza tu flujo de efectivo en tiempo real con gráficos interactivos que
+                        se
+                        actualizan al instante.</p>
+                    <ul class="feature-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Sincronización automática</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Categorización con IA</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Alertas proactivas</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 2 -->
+            <div class="col-md-6 col-lg-4 reveal-item" style="--delay:.1s">
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <i class="bi bi-bullseye"></i>
+                    </div>
+                    <h3 class="feature-title">Presupuestos Adaptativos</h3>
+                    <p class="feature-desc">Crea presupuestos personalizados que se ajustan a tus patrones de gasto y te
+                        alertan antes de exceder.</p>
+                    <ul class="feature-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Límites por categoría</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Proyecciones inteligentes</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Notificaciones push</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 3 -->
+            <div class="col-md-6 col-lg-4 reveal-item" style="--delay:.2s">
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <i class="bi bi-bar-chart-line-fill"></i>
+                    </div>
+                    <h3 class="feature-title">Analytics Profundo</h3>
+                    <p class="feature-desc">Descubre insights ocultos en tus finanzas con reportes detallados y análisis
+                        predictivo.</p>
+                    <ul class="feature-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Reportes exportables</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Comparativas históricas</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Tendencias visuales</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 4 -->
+            <div class="col-md-6 col-lg-4 reveal-item" style="--delay:.1s">
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <h3 class="feature-title">Multi-Dispositivo</h3>
+                    <p class="feature-desc">Accede desde web, móvil o tablet. Tus datos siempre sincronizados y seguros
+                        en la nube.</p>
+                    <ul class="feature-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Apps nativas iOS/Android</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Sync en tiempo real</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Offline-first</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Feature 5 -->
+            <div class="col-md-6 col-lg-4 reveal-item" style="--delay:.2s">
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">
+                        <i class="bi bi-shield-lock-fill"></i>
+                    </div>
+                    <h3 class="feature-title">Seguridad Bancaria</h3>
+                    <p class="feature-desc">Encriptación de nivel bancario (AES-256) y autenticación de dos factores
+                        para máxima protección.</p>
+                    <ul class="feature-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Certificación ISO 27001</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Backups diarios</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Zero-knowledge encryption</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 4. HOW IT WORKS ===== -->
+<section class="steps-section" id="how">
+    <div class="container">
+        <div class="section-header text-center reveal-item">
+            <h2 class="section-title">Comienza en 3 simples pasos</h2>
+        </div>
+
+        <div class="steps-row">
+            <div class="step-card reveal-item">
+                <span class="step-number">01</span>
+                <div class="step-icon-wrap"><i class="bi bi-person-plus-fill"></i></div>
+                <h3 class="step-title">Crea tu cuenta gratis</h3>
+                <p class="step-desc">Regístrate en 30 segundos sin tarjeta de crédito. Prueba gratuita de 14 días
+                    completa.</p>
+            </div>
+            <div class="step-connector"><i class="bi bi-arrow-right"></i></div>
+            <div class="step-card reveal-item" style="--delay:.15s">
+                <span class="step-number">02</span>
+                <div class="step-icon-wrap"><i class="bi bi-link-45deg"></i></div>
+                <h3 class="step-title">Conecta tus transacciones</h3>
+                <p class="step-desc">Registra tus ingresos y gastos manual o automáticamente. Categorización
+                    inteligente.</p>
+            </div>
+            <div class="step-connector"><i class="bi bi-arrow-right"></i></div>
+            <div class="step-card reveal-item" style="--delay:.3s">
+                <span class="step-number">03</span>
+                <div class="step-icon-wrap"><i class="bi bi-graph-up-arrow"></i></div>
+                <h3 class="step-title">Toma mejores decisiones</h3>
+                <p class="step-desc">Visualiza insights, establece presupuestos y alcanza tus metas financieras más
+                    rápido.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 5. DASHBOARD PREVIEW ===== -->
+<section class="preview-section" id="preview">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7 reveal-item">
+                <div class="preview-mock">
+                    <div class="dash-topbar">
+                        <span class="dash-dot dash-dot--red"></span>
+                        <span class="dash-dot dash-dot--yellow"></span>
+                        <span class="dash-dot dash-dot--green"></span>
+                        <span class="dash-topbar-title">Luxa — Resumen Mensual</span>
+                    </div>
+                    <div class="dash-body preview-dash-body">
+                        <div class="dash-card-row">
+                            <div class="dash-mini-card">
+                                <span class="dash-mini-label">Balance Total</span>
+                                <span class="dash-mini-value text-accent">$12,840.00</span>
+                            </div>
+                            <div class="dash-mini-card">
+                                <span class="dash-mini-label">Meta de Ahorro</span>
+                                <div class="preview-progress">
+                                    <div class="preview-progress-bar" style="width:72%"></div>
+                                </div>
+                                <span class="dash-mini-value" style="font-size:.8rem">72% completado</span>
+                            </div>
+                        </div>
+                        <div class="preview-table">
+                            <div class="preview-table-row preview-table-header">
+                                <span>Categoría</span><span>Monto</span><span>Tendencia</span>
+                            </div>
+                            <div class="preview-table-row">
+                                <span><i class="bi bi-house-fill"></i> Vivienda</span>
+                                <span class="mono-num">$850.000</span>
+                                <span class="text-danger-custom"><i class="bi bi-arrow-up-short"></i>3%</span>
+                            </div>
+                            <div class="preview-table-row">
+                                <span><i class="bi bi-cart-fill"></i> Alimentación</span>
+                                <span class="mono-num">$420.500</span>
+                                <span class="text-success-custom"><i class="bi bi-arrow-down-short"></i>8%</span>
+                            </div>
+                            <div class="preview-table-row">
+                                <span><i class="bi bi-car-front-fill"></i> Transporte</span>
+                                <span class="mono-num"> $180.000</span>
+                                <span class="text-success-custom"><i class="bi bi-arrow-down-short"></i>12%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 reveal-item" style="--delay:.15s">
+                <h2 class="section-title">Una aplicacion que trabaja por ti</h2>
+                <p class="section-subtitle" style="text-align:left">Toda tu información financiera organizada de forma
+                    clara e intuitiva.</p>
+                <ul class="preview-benefits">
+                    <li><i class="bi bi-check2"></i> Resumen financiero instantáneo</li>
+                    <li><i class="bi bi-check2"></i> Gráficos interactivos en tiempo real</li>
+                    <li><i class="bi bi-check2"></i> Acceso desde cualquier dispositivo</li>
+                    <li><i class="bi bi-check2"></i> Exporta reportes en PDF/Excel</li>
+                    <li><i class="bi bi-check2"></i> Alertas inteligentes personalizadas</li>
+                </ul>
+                <button class="btn btn-primary-glow" (click)="openModal('signup')">
+                    Explorar Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 6. PRICING ===== -->
+<section class="pricing-section" id="pricing">
+    <div class="container">
+        <div class="section-header text-center reveal-item">
+            <h2 class="section-title">Planes para cada necesidad</h2>
+            <p class="section-subtitle">Comienza gratis, actualiza cuando quieras</p>
+        </div>
+
+        <div class="row g-4 justify-content-center mt-2">
+            <!-- Free -->
+            <div class="col-md-6 col-lg-4 reveal-item">
+                <div class="pricing-card">
+                    <h3 class="pricing-name">Básico</h3>
+                    <div class="pricing-price"><span class="mono-num">$0</span><small>/mes</small></div>
+                    <p class="pricing-tagline">Para empezar a organizar</p>
+                    <ul class="pricing-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Hasta 50 transacciones/mes</li>
+                        <li><i class="bi bi-check-circle-fill"></i> 5 categorías personalizadas</li>
+                        <li><i class="bi bi-check-circle-fill"></i> 1 presupuesto</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Reportes básicos</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Soporte por email</li>
+                        <li class="disabled"><i class="bi bi-x-circle"></i> Analytics avanzado</li>
+                    </ul>
+                    <button class="btn btn-outline-light-custom w-100" (click)="openModal('signup')">Comenzar
+                        Gratis</button>
+                </div>
+            </div>
+            <!-- Pro -->
+            <div class="col-md-6 col-lg-4 reveal-item" style="--delay:.1s">
+                <div class="pricing-card pricing-card--popular">
+                    <span class="pricing-badge">Más Popular</span>
+                    <h3 class="pricing-name">Pro</h3>
+                    <div class="pricing-price"><span class="mono-num">$35.000</span><small>/mes</small></div>
+                    <p class="pricing-tagline">Lo mejor para uso personal</p>
+                    <ul class="pricing-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Transacciones ilimitadas</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Categorías ilimitadas</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Presupuestos ilimitados</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Analytics avanzado</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Exportar reportes</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Recordatorios inteligentes</li> 
+                        <li><i class="bi bi-check-circle-fill"></i> Soporte prioritario</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Sin publicidad</li>
+                    </ul>
+                    <button class="btn btn-primary-glow w-100" (click)="openModal('signup')">Empezar Prueba 14
+                        días</button>
+                </div>
+            </div>
+            <!-- Family -->
+            <div class="col-md-6 col-lg-4 reveal-item" style="--delay:.2s">
+                <div class="pricing-card">
+                    <h3 class="pricing-name">Familiar</h3>
+                    <div class="pricing-price"><span class="mono-num">$90.000</span><small>/mes</small></div>
+                    <p class="pricing-tagline">Para toda la familia</p>
+                    <ul class="pricing-features">
+                        <li><i class="bi bi-check-circle-fill"></i> Todo de Pro +</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Hasta 5 usuarios</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Presupuestos compartidos</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Permisos granulares</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Dashboard familiar</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Soporte premium 24/7</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Onboarding personalizado</li>
+                    </ul>
+                    <button class="btn btn-outline-light-custom w-100" (click)="openModal('signup')">Comenzar</button>
+                </div>
+            </div>
+        </div>
+
+        <p class="pricing-note text-center mt-4 reveal-item">
+            Todos los planes incluyen 14 días de prueba gratis. Cancela cuando quieras.
+        </p>
+    </div>
+</section>
+
+
+<!-- ===== 7. TESTIMONIALS ===== -->
+<section class="testimonials-section" id="testimonials">
+    <div class="container">
+        <div class="section-header text-center reveal-item">
+            <h2 class="section-title">Más de 12,000 usuarios confían en nosotros</h2>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-4 reveal-item">
+                <div class="testimonial-card">
+                    <i class="bi bi-quote testimonial-quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Luxa transformó completamente mi relación con el dinero. Ahora sé exactamente a dónde va cada
+                        peso y he logrado ahorrar un 35% más en solo 3 meses."
+                    </p>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MG</div>
+                        <div>
+                            <strong>María González</strong>
+                            <span>Diseñadora Freelance</span>
+                        </div>
+                        <i class="bi bi-patch-check-fill testimonial-verified"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 reveal-item" style="--delay:.1s">
+                <div class="testimonial-card">
+                    <i class="bi bi-quote testimonial-quote-icon"></i>
+                    <p class="testimonial-text">
+                        "La interfaz es increíblemente intuitiva y los reportes son súper claros. Finalmente encontré
+                        una app de finanzas que realmente uso todos los días."
+                    </p>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CM</div>
+                        <div>
+                            <strong>Carlos Mendoza</strong>
+                            <span>Ingeniero de Software</span>
+                        </div>
+                        <i class="bi bi-patch-check-fill testimonial-verified"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 reveal-item" style="--delay:.2s">
+                <div class="testimonial-card">
+                    <i class="bi bi-quote testimonial-quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Como familia compartimos presupuestos y todos podemos ver los gastos. Nos ayudó a alcanzar
+                        nuestra meta de ahorrar para la casa en tiempo récord."
+                    </p>
+                    <div class="testimonial-stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AP</div>
+                        <div>
+                            <strong>Ana &amp; Luis Pérez</strong>
+                            <span>Emprendedores</span>
+                        </div>
+                        <i class="bi bi-patch-check-fill testimonial-verified"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 8. CTA FINAL ===== -->
+<section class="cta-section" id="cta">
+    <div class="container text-center">
+        <h2 class="cta-title reveal-item">
+            Comienza a tomar mejores decisiones financieras <span class="text-gradient">hoy</span>
+        </h2>
+        <p class="cta-subtitle reveal-item">Únete a miles de usuarios que ya transformaron sus finanzas</p>
+        <div class="cta-perks reveal-item">
+            <span><i class="bi bi-check-lg"></i> Gratis por 14 días</span>
+            <span><i class="bi bi-check-lg"></i> Sin tarjeta de crédito</span>
+            <span><i class="bi bi-check-lg"></i> Cancela cuando quieras</span>
+        </div>
+        <button class="btn btn-cta-big reveal-item" (click)="openModal('signup')">
+            Crear Cuenta Gratis
+        </button>
+        <p class="cta-login-link reveal-item">
+            ¿Ya tienes cuenta? <a (click)="openModal('login')">Inicia sesión</a>
+        </p>
+    </div>
+</section>
+
+
+
+
+<!-- LOGIN MODAL -->
+@if (activeModal === 'login') {
+<div class="modal-overlay" (click)="closeModal($event)">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="activeModal = null">&times;</button>
+        <h2 class="modal-title">Bienvenido de vuelta</h2>
+        <form (submit)="$event.preventDefault()">
+            <div class="input-group-custom">
+                <i class="bi bi-envelope"></i>
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="loginEmail" name="loginEmail"
+                    required />
+            </div>
+            <div class="input-group-custom">
+                <i class="bi bi-lock"></i>
+                <input [type]="showLoginPass ? 'text' : 'password'" placeholder="Contraseña" [(ngModel)]="loginPassword"
+                    name="loginPassword" required />
+                <button type="button" class="input-toggle" (click)="showLoginPass = !showLoginPass">
+                    <i class="bi" [ngClass]="showLoginPass ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+            </div>
+            <div class="modal-extras">
+                <label class="modal-checkbox"><input type="checkbox" /> Recordarme</label>
+                <a (click)="switchModal('forgot')">¿Olvidaste contraseña?</a>
+            </div>
+            <button type="submit" class="btn btn-primary-glow w-100">Iniciar Sesión</button>
+        </form>
+        <div class="modal-divider"><span>O continúa con</span></div>
+        <div class="modal-social">
+            <button class="btn btn-social"><i class="bi bi-google"></i> Google</button>
+            <button class="btn btn-social"><i class="bi bi-apple"></i> Apple</button>
+        </div>
+        <p class="modal-footer-text">
+            ¿No tienes cuenta? <a (click)="switchModal('signup')">Regístrate</a>
+        </p>
+    </div>
+</div>
+}
+
+<!-- SIGNUP MODAL -->
+@if (activeModal === 'signup') {
+<div class="modal-overlay" (click)="closeModal($event)">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="activeModal = null">&times;</button>
+        <h2 class="modal-title">Crea tu cuenta gratis</h2>
+        <form (submit)="$event.preventDefault()">
+            <div class="input-group-custom">
+                <i class="bi bi-person"></i>
+                <input type="text" placeholder="Nombre completo" [(ngModel)]="signupName" name="signupName" required />
+            </div>
+            <div class="input-group-custom">
+                <i class="bi bi-envelope"></i>
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="signupEmail" name="signupEmail"
+                    required />
+            </div>
+            <div class="input-group-custom">
+                <i class="bi bi-lock"></i>
+                <input [type]="showSignupPass ? 'text' : 'password'" placeholder="Contraseña"
+                    [(ngModel)]="signupPassword" name="signupPassword" required />
+                <button type="button" class="input-toggle" (click)="showSignupPass = !showSignupPass">
+                    <i class="bi" [ngClass]="showSignupPass ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+            </div>
+            <!-- Password Strength -->
+            @if (signupPassword) {
+            <div class="password-strength">
+                <div class="password-strength-bar">
+                    <div class="password-strength-fill" [style.width]="passwordStrength + '%'"
+                        [class.weak]="passwordStrength < 40"
+                        [class.medium]="passwordStrength >= 40 && passwordStrength < 75"
+                        [class.strong]="passwordStrength >= 75"></div>
+                </div>
+                <small class="password-strength-label">
+                    {{ passwordStrength < 40 ? 'Débil' : passwordStrength < 75 ? 'Media' : 'Fuerte' }} </small>
+            </div>
+            }
+            <div class="input-group-custom">
+                <i class="bi bi-lock-fill"></i>
+                <input [type]="showSignupPass ? 'text' : 'password'" placeholder="Confirmar contraseña"
+                    [(ngModel)]="signupConfirm" name="signupConfirm" required />
+            </div>
+            @if (signupConfirm && signupPassword !== signupConfirm) {
+            <small class="text-danger-custom d-block mb-2" style="font-size:.8rem">Las contraseñas no
+                coinciden</small>
+            }
+            <label class="modal-checkbox mb-3">
+                <input type="checkbox" [(ngModel)]="acceptTerms" name="acceptTerms" />
+                Acepto los <a href="#">términos y condiciones</a>
+            </label>
+            <button type="submit" class="btn btn-primary-glow w-100" [disabled]="!acceptTerms">Crear Cuenta
+                Gratis</button>
+        </form>
+        <div class="modal-divider"><span>O continúa con</span></div>
+        <div class="modal-social">
+            <button class="btn btn-social"><i class="bi bi-google"></i> Google</button>
+            <button class="btn btn-social"><i class="bi bi-apple"></i> Apple</button>
+        </div>
+        <p class="modal-footer-text">
+            ¿Ya tienes cuenta? <a (click)="switchModal('login')">Inicia sesión</a>
+        </p>
+    </div>
+</div>
+}
+
+<!-- FORGOT PASSWORD MODAL -->
+@if (activeModal === 'forgot') {
+<div class="modal-overlay" (click)="closeModal($event)">
+    <div class="modal-card modal-card--sm" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="activeModal = null">&times;</button>
+        <div class="text-center mb-3">
+            <i class="bi bi-envelope-at-fill modal-big-icon"></i>
+        </div>
+        <h2 class="modal-title text-center">¿Olvidaste tu contraseña?</h2>
+        <p class="modal-subtitle text-center">Te enviaremos instrucciones para restablecerla.</p>
+        <form (submit)="$event.preventDefault()">
+            <div class="input-group-custom">
+                <i class="bi bi-envelope"></i>
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="forgotEmail" name="forgotEmail"
+                    required />
+            </div>
+            <button type="submit" class="btn btn-primary-glow w-100">Enviar Instrucciones</button>
+        </form>
+        <p class="modal-footer-text text-center mt-3">
+            <a (click)="switchModal('login')"><i class="bi bi-arrow-left"></i> Volver a Iniciar Sesión</a>
+        </p>
+    </div>
+</div>
+}

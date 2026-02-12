@@ -1,0 +1,327 @@
+/* ===========================
+   HEADER BASE
+=========================== */
+
+:host {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.app-header {
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--fluxa-border);
+}
+
+.header-nav {
+    position: relative;
+}
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.header-logo-icon {
+    transition: transform var(--transition-smooth);
+}
+
+.header-logo:hover .header-logo-icon {
+    transform: scale(1.08);
+}
+
+.header-logo-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--fluxa-text-primary);
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ffffff 40%, var(--fluxa-primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===========================
+   NAVIGATION LINKS
+=========================== */
+
+.header-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.15rem;
+}
+
+.header-link {
+    display: inline-block;
+    color: var(--fluxa-text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+    position: relative;
+}
+
+.header-link:hover {
+    color: var(--fluxa-text-primary);
+    background-color: var(--glass-bg);
+}
+
+/* ===========================
+   ACTIONS (RIGHT SIDE)
+=========================== */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.header-link-login {
+    color: var(--fluxa-text-secondary) !important;
+    font-weight: 400;
+    font-size: 0.85rem;
+    border: 1px solid transparent;
+    transition: color var(--transition-fast),
+        background-color var(--transition-fast),
+        border-color var(--transition-fast) !important;
+}
+
+.header-link-login:hover {
+    color: var(--fluxa-text-primary) !important;
+    background-color: var(--glass-bg) !important;
+    border-color: var(--glass-border) !important;
+}
+
+/* ===========================
+   CTA BUTTON — GLASSMORPHISM
+=========================== */
+
+.header-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--glass-cta-bg);
+    color: var(--fluxa-text-primary);
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--glass-cta-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-cta-glow);
+    transition: background var(--transition-smooth),
+        border-color var(--transition-smooth),
+        box-shadow var(--transition-smooth),
+        transform var(--transition-smooth);
+}
+
+.header-btn-primary:hover {
+    background: rgba(59, 130, 246, 0.25);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 28px rgba(59, 130, 246, 0.3);
+    transform: translateY(-1px);
+}
+
+.header-btn-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3B82F6, #818CF8);
+    display: inline-block;
+    flex-shrink: 0;
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* ===========================
+   MOBILE TOGGLE
+=========================== */
+
+.header-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: var(--fluxa-text-primary);
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 6px;
+    transition: background-color var(--transition-fast);
+}
+
+.header-mobile-toggle:hover {
+    background-color: var(--glass-bg-hover);
+}
+
+/* ===========================
+   MOBILE MENU
+=========================== */
+
+.header-mobile-menu {
+    display: none;
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--fluxa-border);
+    padding: 1rem 2rem 1.5rem;
+    animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-mobile-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.header-mobile-links li {
+    margin-bottom: 0.15rem;
+}
+
+.header-mobile-links a {
+    display: block;
+    color: var(--fluxa-text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0.55rem 0.75rem;
+    border-radius: 6px;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.header-mobile-links a:hover {
+    color: var(--fluxa-text-primary);
+    background-color: var(--glass-bg);
+}
+
+.header-mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--fluxa-border);
+}
+
+.header-mobile-login {
+    display: block;
+    text-align: center;
+    color: var(--fluxa-text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0.55rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: color var(--transition-fast),
+        background-color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.header-mobile-login:hover {
+    color: var(--fluxa-text-primary);
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+
+.header-mobile-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--glass-cta-bg);
+    color: var(--fluxa-text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.65rem;
+    border-radius: 9999px;
+    border: 1px solid var(--glass-cta-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-cta-glow);
+    transition: background var(--transition-smooth),
+        border-color var(--transition-smooth),
+        box-shadow var(--transition-smooth);
+}
+
+.header-mobile-cta:hover {
+    background: rgba(59, 130, 246, 0.25);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 28px rgba(59, 130, 246, 0.3);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+    .header-links {
+        display: none;
+    }
+
+    .header-actions {
+        display: none;
+    }
+
+    .header-mobile-toggle {
+        display: block;
+    }
+
+    .header-mobile-menu {
+        display: block;
+    }
+
+    .header-container {
+        padding: 0 1.25rem;
+    }
+}

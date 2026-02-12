@@ -1,0 +1,320 @@
+/* ===========================
+   FOOTER BASE
+=========================== */
+
+:host {
+  display: block;
+}
+
+.app-footer {
+  background-color: var(--fluxa-bg-dark);
+  color: var(--fluxa-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  border-top: 1px solid var(--fluxa-border);
+}
+
+.footer-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ===========================
+   TOP SECTION (GRID)
+=========================== */
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  padding: 4rem 0 3rem;
+  align-items: start;
+}
+
+/* ===========================
+   BRAND / LOGO
+=========================== */
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+}
+
+.footer-logo-icon {
+  transition: transform var(--transition-smooth);
+}
+
+.footer-logo-link:hover .footer-logo-icon {
+  transform: scale(1.08);
+}
+
+.footer-logo-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 40%, var(--fluxa-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-tagline {
+  color: var(--fluxa-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  max-width: 260px;
+  margin: 0;
+}
+
+/* ===========================
+   SOCIAL ICONS
+=========================== */
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.footer-social a {
+  color: var(--fluxa-text-muted);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-social a:hover {
+  color: var(--fluxa-primary-light);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   COLUMNS
+=========================== */
+
+.footer-col {
+  min-width: 0;
+}
+
+.footer-title {
+  color: var(--fluxa-text-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+  color: var(--fluxa-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: var(--fluxa-text-primary);
+  padding-left: 4px;
+}
+
+/* ===========================
+   NEWSLETTER — GLASSMORPHISM
+=========================== */
+
+.footer-col-connect {
+  max-width: 320px;
+}
+
+.footer-connect-text {
+  color: var(--fluxa-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 1.15rem;
+}
+
+.footer-subscribe-form {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 0.75rem;
+}
+
+.footer-subscribe-input {
+  flex: 1;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  color: var(--fluxa-text-primary);
+  padding: 0.6rem 0.85rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  outline: none;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.footer-subscribe-input::placeholder {
+  color: var(--fluxa-text-muted);
+}
+
+.footer-subscribe-input:focus {
+  border-color: var(--glass-cta-border);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-subscribe-btn {
+  background: var(--glass-cta-bg);
+  color: var(--fluxa-text-primary);
+  border: 1px solid var(--glass-cta-border);
+  border-radius: 0 8px 8px 0;
+  padding: 0.6rem 1.15rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: background var(--transition-smooth),
+    border-color var(--transition-smooth),
+    box-shadow var(--transition-smooth);
+}
+
+.footer-subscribe-btn:hover {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.footer-subscribe-disclaimer {
+  color: var(--fluxa-text-subtle);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ===========================
+   DIVIDER
+=========================== */
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid var(--fluxa-border);
+  margin: 0;
+}
+
+/* ===========================
+   BOTTOM SECTION
+=========================== */
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: var(--fluxa-text-subtle);
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-legal a {
+  font-size: 0.78rem;
+  color: var(--fluxa-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.footer-legal a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--fluxa-primary-light);
+  transition: width var(--transition-smooth);
+}
+
+.footer-legal a:hover {
+  color: var(--fluxa-text-primary);
+}
+
+.footer-legal a:hover::after {
+  width: 100%;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 992px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-col-connect {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 0 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .footer-legal {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-container {
+    padding: 0 1.25rem;
+  }
+}
