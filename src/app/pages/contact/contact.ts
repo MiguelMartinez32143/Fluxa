@@ -28,16 +28,12 @@ export class Contact {
   onSubmit() {
     this.submitted = true;
     if (this.contactForm.valid) {
-      // Descargar como archivo JSON
-      const entry = {
-        ...this.contactForm.value,
-        date: new Date().toISOString(),
-      };
+      const entry = this.contactForm.value;
       const blob = new Blob([JSON.stringify(entry, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `contacto_${Date.now()}.json`;
+      a.download = 'contacto.json';
       a.click();
       URL.revokeObjectURL(url);
 
