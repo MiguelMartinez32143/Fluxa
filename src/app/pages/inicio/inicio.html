@@ -460,7 +460,7 @@
                         <li><i class="bi bi-check-circle-fill"></i> Presupuestos ilimitados</li>
                         <li><i class="bi bi-check-circle-fill"></i> Analytics avanzado</li>
                         <li><i class="bi bi-check-circle-fill"></i> Exportar reportes</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Recordatorios inteligentes</li> 
+                        <li><i class="bi bi-check-circle-fill"></i> Recordatorios inteligentes</li>
                         <li><i class="bi bi-check-circle-fill"></i> Soporte prioritario</li>
                         <li><i class="bi bi-check-circle-fill"></i> Sin publicidad</li>
                     </ul>
@@ -601,7 +601,7 @@
     <div class="modal-card" (click)="$event.stopPropagation()">
         <button class="modal-close" (click)="activeModal = null">&times;</button>
         <h2 class="modal-title">Bienvenido de vuelta</h2>
-        <form (submit)="$event.preventDefault()">
+        <form (submit)="$event.preventDefault(); handleLogin()">
             <div class="input-group-custom">
                 <i class="bi bi-envelope"></i>
                 <input type="email" placeholder="Correo electrónico" [(ngModel)]="loginEmail" name="loginEmail"

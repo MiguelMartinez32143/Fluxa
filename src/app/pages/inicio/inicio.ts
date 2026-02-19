@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class Inicio implements AfterViewInit, OnDestroy {
 
+
   activeModal: 'login' | 'signup' | 'forgot' | null = null;
 
   /* Login */
@@ -76,6 +77,15 @@ export class Inicio implements AfterViewInit, OnDestroy {
   }
   switchModal(type: 'login' | 'signup' | 'forgot') {
     this.activeModal = type;
+  }
+
+  handleLogin(): void {
+    if (this.loginEmail && this.loginPassword) {
+      this.activeModal = null;
+      if (this.isBrowser) {
+        document.body.style.overflow = '';
+      }
+    }
   }
 
   /* ----- Lifecycle ----- */

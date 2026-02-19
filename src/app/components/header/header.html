@@ -29,11 +29,11 @@
             </ul>
 
             <div class="header-actions">
-                <a routerLink="/login" class="header-link header-link-login">Iniciar sesión</a>
-                <a routerLink="/register" class="header-btn-primary">
+                <button class="header-link header-link-login" (click)="openModal('login')">Iniciar sesión</button>
+                <button class="header-btn-primary" (click)="openModal('signup')">
                     Comenzar gratis
                     <span class="header-btn-dot"></span>
-                </a>
+                </button>
             </div>
 
             <button class="header-mobile-toggle" aria-label="Abrir menú" (click)="toggleMenu()">
@@ -52,13 +52,139 @@
                 <li><a routerLink="/about" (click)="toggleMenu()">Sobre Nosotros</a></li>
             </ul>
             <div class="header-mobile-actions">
-                <a routerLink="/login" class="header-mobile-login" (click)="toggleMenu()">Iniciar sesión</a>
-                <a routerLink="/register" class="header-mobile-cta" (click)="toggleMenu()">
+                <button class="header-mobile-login" (click)="toggleMenu(); openModal('login')">Iniciar sesión</button>
+                <button class="header-mobile-cta" (click)="toggleMenu(); openModal('signup')">
                     Comenzar gratis
                     <span class="header-btn-dot"></span>
-                </a>
+                </button>
             </div>
         </div>
         }
     </nav>
 </header>
+
+
+<!-- ===== LOGIN MODAL ===== -->
+@if (activeModal === 'login') {
+<div class="modal-overlay" (click)="closeModal($event)">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="dismissModal()">&times;</button>
+        <h2 class="modal-title">Bienvenido de vuelta</h2>
+        <form (submit)="$event.preventDefault(); handleLogin()">
+            <div class="input-group-custom">
+                <i class="bi bi-envelope"></i>
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="loginEmail" name="loginEmail"
+                    required />
+            </div>
+            <div class="input-group-custom">
+                <i class="bi bi-lock"></i>
+                <input [type]="showLoginPass ? 'text' : 'password'" placeholder="Contraseña" [(ngModel)]="loginPassword"
+                    name="loginPassword" required />
+                <button type="button" class="input-toggle" (click)="showLoginPass = !showLoginPass">
+                    <i class="bi" [ngClass]="showLoginPass ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+            </div>
+            <div class="modal-extras">
+                <label class="modal-checkbox"><input type="checkbox" /> Recordarme</label>
+                <a (click)="switchModal('forgot')">¿Olvidaste contraseña?</a>
+            </div>
+            <button type="submit" class="btn-glow">Iniciar Sesión</button>
+        </form>
+        <div class="modal-divider"><span>O continúa con</span></div>
+        <div class="modal-social">
+            <button class="btn-social"><i class="bi bi-google"></i> Google</button>
+            <button class="btn-social"><i class="bi bi-apple"></i> Apple</button>
+        </div>
+        <p class="modal-footer-text">
+            ¿No tienes cuenta? <a (click)="switchModal('signup')">Regístrate</a>
+        </p>
+    </div>
+</div>
+}
+
+<!-- ===== SIGNUP MODAL ===== -->
+@if (activeModal === 'signup') {
+<div class="modal-overlay" (click)="closeModal($event)">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="dismissModal()">&times;</button>
+        <h2 class="modal-title">Crea tu cuenta gratis</h2>
+        <form (submit)="$event.preventDefault()">
+            <div class="input-group-custom">
+                <i class="bi bi-person"></i>
+                <input type="text" placeholder="Nombre completo" [(ngModel)]="signupName" name="signupName" required />
+            </div>
+            <div class="input-group-custom">
+                <i class="bi bi-envelope"></i>
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="signupEmail" name="signupEmail"
+                    required />
+            </div>
+            <div class="input-group-custom">
+                <i class="bi bi-lock"></i>
+                <input [type]="showSignupPass ? 'text' : 'password'" placeholder="Contraseña"
+                    [(ngModel)]="signupPassword" name="signupPassword" required />
+                <button type="button" class="input-toggle" (click)="showSignupPass = !showSignupPass">
+                    <i class="bi" [ngClass]="showSignupPass ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+            </div>
+            @if (signupPassword) {
+            <div class="password-strength">
+                <div class="password-strength-bar">
+                    <div class="password-strength-fill" [style.width]="passwordStrength + '%'"
+                        [class.weak]="passwordStrength < 40"
+                        [class.medium]="passwordStrength >= 40 && passwordStrength < 75"
+                        [class.strong]="passwordStrength >= 75"></div>
+                </div>
+                <small class="password-strength-label">
+                    {{ passwordStrength < 40 ? 'Débil' : passwordStrength < 75 ? 'Media' : 'Fuerte' }} </small>
+            </div>
+            }
+            <div class="input-group-custom">
+                <i class="bi bi-lock-fill"></i>
+                <input [type]="showSignupPass ? 'text' : 'password'" placeholder="Confirmar contraseña"
+                    [(ngModel)]="signupConfirm" name="signupConfirm" required />
+            </div>
+            @if (signupConfirm && signupPassword !== signupConfirm) {
+            <small class="text-danger-small">Las contraseñas no coinciden</small>
+            }
+            <label class="modal-checkbox mb-3">
+                <input type="checkbox" [(ngModel)]="acceptTerms" name="acceptTerms" />
+                Acepto los <a href="#">términos y condiciones</a>
+            </label>
+            <button type="submit" class="btn-glow" [disabled]="!acceptTerms">Crear Cuenta Gratis</button>
+        </form>
+        <div class="modal-divider"><span>O continúa con</span></div>
+        <div class="modal-social">
+            <button class="btn-social"><i class="bi bi-google"></i> Google</button>
+            <button class="btn-social"><i class="bi bi-apple"></i> Apple</button>
+        </div>
+        <p class="modal-footer-text">
+            ¿Ya tienes cuenta? <a (click)="switchModal('login')">Inicia sesión</a>
+        </p>
+    </div>
+</div>
+}
+
+<!-- ===== FORGOT PASSWORD MODAL ===== -->
+@if (activeModal === 'forgot') {
+<div class="modal-overlay" (click)="closeModal($event)">
+    <div class="modal-card modal-card--sm" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="dismissModal()">&times;</button>
+        <div class="text-center mb-3">
+            <i class="bi bi-envelope-at-fill modal-big-icon"></i>
+        </div>
+        <h2 class="modal-title text-center">¿Olvidaste tu contraseña?</h2>
+        <p class="modal-subtitle text-center">Te enviaremos instrucciones para restablecerla.</p>
+        <form (submit)="$event.preventDefault()">
+            <div class="input-group-custom">
+                <i class="bi bi-envelope"></i>
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="forgotEmail" name="forgotEmail"
+                    required />
+            </div>
+            <button type="submit" class="btn-glow">Enviar Instrucciones</button>
+        </form>
+        <p class="modal-footer-text text-center mt-3">
+            <a (click)="switchModal('login')"><i class="bi bi-arrow-left"></i> Volver a Iniciar Sesión</a>
+        </p>
+    </div>
+</div>
+}

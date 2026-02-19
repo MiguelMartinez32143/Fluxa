@@ -1,1 +1,176 @@
-<p>contact works!</p>
+<!-- ===== HERO ===== -->
+<section class="page-hero">
+    <div class="container">
+        <span class="page-badge"><i class="bi bi-envelope-fill"></i> Contacto</span>
+        <h1 class="page-title">¿Tienes alguna pregunta? <span class="text-gradient">Estamos aquí para ti</span></h1>
+        <p class="page-subtitle">Nuestro equipo responde en menos de 24 horas. Cuéntanos en qué podemos ayudarte.</p>
+    </div>
+</section>
+
+<!-- ===== SUCCESS TOAST ===== -->
+@if (showSuccess) {
+<div class="success-toast">
+    <i class="bi bi-check-circle-fill"></i>
+    <span>¡Mensaje enviado con éxito! Te responderemos pronto.</span>
+</div>
+}
+
+<!-- ===== CONTACT CONTENT ===== -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Info Cards -->
+            <div class="contact-info-stack">
+                <div class="contact-info-card">
+                    <div class="contact-info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                    <div>
+                        <h4>Oficinas</h4>
+                        <p>Bogota, Colombia<br></p>
+                    </div>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-icon accent"><i class="bi bi-envelope-fill"></i></div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>soporte&#64;fluxa.com<br>ventas&#64;fluxa.com</p>
+                    </div>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-icon purple"><i class="bi bi-clock-fill"></i></div>
+                    <div>
+                        <h4>Horario</h4>
+                        <p>Lunes a Viernes: 9:00 - 18:00<br>Sábados: 10:00 - 14:00</p>
+                    </div>
+                </div>
+                <div class="contact-info-card">
+                    <div class="contact-info-icon green"><i class="bi bi-chat-dots-fill"></i></div>
+                    <div>
+                        <h4>Chat en vivo</h4>
+                        <p>Disponible L-V de 9am a 6pm<br>Respuesta promedio: 5 min</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="contact-form-card">
+                <div class="form-header">
+                    <div class="form-header-icon"><i class="bi bi-send-fill"></i></div>
+                    <div>
+                        <h3>Envíanos un mensaje</h3>
+                        <p class="form-subtitle-text">Completa el formulario y te responderemos pronto.</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row">
+                        <!-- Nombre -->
+                        <div class="form-group">
+                            <label class="form-label-custom">
+                                <i class="bi bi-person-fill"></i> Nombre
+                            </label>
+                            <input type="text" class="form-input-custom"
+                                [ngClass]="{'input-error': submitted && f['name'].errors}" formControlName="name"
+                                placeholder="Tu nombre completo" />
+                            @if (submitted && f['name'].errors) {
+                            <span class="field-error">
+                                @if (f['name'].errors['required']) { El nombre es obligatorio }
+                                @if (f['name'].errors['minlength']) { Mínimo 2 caracteres }
+                            </span>
+                            }
+                        </div>
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label class="form-label-custom">
+                                <i class="bi bi-envelope-fill"></i> Email
+                            </label>
+                            <input type="email" class="form-input-custom"
+                                [ngClass]="{'input-error': submitted && f['email'].errors}" formControlName="email"
+                                placeholder="tu@email.com" />
+                            @if (submitted && f['email'].errors) {
+                            <span class="field-error">
+                                @if (f['email'].errors['required']) { El email es obligatorio }
+                                @if (f['email'].errors['email']) { Ingresa un email válido }
+                            </span>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Asunto -->
+                    <div class="form-group">
+                        <label class="form-label-custom">
+                            <i class="bi bi-tag-fill"></i> Asunto
+                        </label>
+                        <div class="select-wrapper">
+                            <select class="form-input-custom"
+                                [ngClass]="{'input-error': submitted && f['subject'].errors}" formControlName="subject">
+                                <option value="">Selecciona un tema</option>
+                                <option value="soporte">Soporte técnico</option>
+                                <option value="planes">Planes y precios</option>
+                                <option value="asociaciones">Asociaciones</option>
+                                <option value="sugerencias">Sugerencias</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <i class="bi bi-chevron-down select-arrow"></i>
+                        </div>
+                        @if (submitted && f['subject'].errors) {
+                        <span class="field-error">Selecciona un asunto</span>
+                        }
+                    </div>
+
+                    <!-- Mensaje -->
+                    <div class="form-group">
+                        <label class="form-label-custom">
+                            <i class="bi bi-chat-left-text-fill"></i> Mensaje
+                        </label>
+                        <textarea class="form-input-custom" rows="5"
+                            [ngClass]="{'input-error': submitted && f['message'].errors}" formControlName="message"
+                            placeholder="Cuéntanos los detalles de tu consulta..."></textarea>
+                        @if (submitted && f['message'].errors) {
+                        <span class="field-error">
+                            @if (f['message'].errors['required']) { El mensaje es obligatorio }
+                            @if (f['message'].errors['minlength']) { Mínimo 10 caracteres }
+                        </span>
+                        }
+                    </div>
+
+                    <div class="form-footer">
+                        <p class="form-disclaimer"><i class="bi bi-shield-check"></i> Tu información está protegida y
+                            nunca será compartida.</p>
+                        <button type="submit" class="btn-submit">
+                            <span class="btn-submit-text">
+                                <i class="bi bi-send-fill"></i> Enviar Mensaje
+                            </span>
+                            <span class="btn-submit-glow"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-section">
+    <div class="container">
+        <h2 class="section-title text-center">Preguntas Frecuentes</h2>
+        <p class="section-subtitle-text text-center">Respuestas a las dudas más comunes</p>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h4><i class="bi bi-question-circle-fill"></i> ¿Cuánto tiempo tarda la respuesta?</h4>
+                <p>Nuestro equipo responde todas las consultas en un plazo máximo de 24 horas hábiles.</p>
+            </div>
+            <div class="faq-item">
+                <h4><i class="bi bi-question-circle-fill"></i> ¿Ofrecen soporte en español?</h4>
+                <p>Sí, todo nuestro equipo de soporte habla español nativo. También ofrecemos atención en inglés.</p>
+            </div>
+            <div class="faq-item">
+                <h4><i class="bi bi-question-circle-fill"></i> ¿Cómo accedo al chat en vivo?</h4>
+                <p>El chat en vivo está disponible directamente desde tu cuenta en horario laboral.</p>
+            </div>
+            <div class="faq-item">
+                <h4><i class="bi bi-question-circle-fill"></i> ¿Puedo agendar una demo?</h4>
+                <p>¡Claro! Escríbenos y agendaremos una demostración personalizada de Fluxa para ti.</p>
+            </div>
+        </div>
+    </div>
+</section>

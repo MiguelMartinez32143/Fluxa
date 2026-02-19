@@ -1,0 +1,287 @@
+/* ===== HOST ===== */
+:host {
+    display: block;
+    color: #ffffff;
+    background-color: #0a0a0a;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+    padding: 120px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.page-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    font-size: .8rem;
+    color: var(--fluxa-primary-light);
+    margin-bottom: 20px;
+    font-family: 'Space Mono', monospace;
+}
+
+.page-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #3B82F6, #818CF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-subtitle {
+    color: var(--fluxa-text-secondary);
+    font-size: 1.05rem;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== MISSION / VISION ===== */
+.mission-section {
+    padding: 60px 0;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 32px;
+    backdrop-filter: var(--glass-blur);
+    transition: var(--transition-smooth);
+    height: 100%;
+}
+
+.glass-card:hover {
+    border-color: var(--glass-border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #3B82F6;
+    margin-bottom: 20px;
+}
+
+.glass-card-icon.accent {
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.2), rgba(129, 140, 248, 0.05));
+    color: #818CF8;
+}
+
+.glass-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.glass-card p {
+    color: var(--fluxa-text-secondary);
+    font-size: .95rem;
+    line-height: 1.7;
+}
+
+/* ===== VALUES ===== */
+.values-section {
+    padding: 60px 0;
+}
+
+.section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+}
+
+.value-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card:hover {
+    border-color: var(--fluxa-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.1);
+}
+
+.value-number {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.04);
+}
+
+.value-card i {
+    font-size: 2rem;
+    color: var(--fluxa-primary-light);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.value-card h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    color: var(--fluxa-text-secondary);
+    font-size: .9rem;
+    line-height: 1.65;
+}
+
+/* ===== TEAM ===== */
+.team-section {
+    padding: 60px 0;
+}
+
+.section-subtitle {
+    color: var(--fluxa-text-secondary);
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+.team-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.team-card:hover {
+    border-color: var(--glass-border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--glass-shadow);
+}
+
+.team-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3B82F6, #22D3EE);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0 auto 16px;
+    color: #fff;
+}
+
+.team-avatar.accent {
+    background: linear-gradient(135deg, #818CF8, #C084FC);
+}
+
+.team-avatar.purple {
+    background: linear-gradient(135deg, #A78BFA, #F472B6);
+}
+
+.team-avatar.green {
+    background: linear-gradient(135deg, #22D3EE, #34D399);
+}
+
+.team-card h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.team-role {
+    font-size: .85rem;
+    color: var(--fluxa-text-secondary);
+    display: block;
+    margin-bottom: 12px;
+}
+
+.team-social {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.team-social a {
+    color: var(--fluxa-text-muted);
+    font-size: 1.1rem;
+    transition: var(--transition-fast);
+}
+
+.team-social a:hover {
+    color: var(--fluxa-primary-light);
+}
+
+/* ===== STATS ===== */
+.about-stats {
+    padding: 60px 0 80px;
+}
+
+.about-stat-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px 16px;
+}
+
+.about-stat-number {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #3B82F6, #22D3EE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+
+.about-stat-label {
+    font-size: .85rem;
+    color: var(--fluxa-text-secondary);
+}
