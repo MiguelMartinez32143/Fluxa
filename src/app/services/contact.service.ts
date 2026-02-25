@@ -13,10 +13,6 @@ export class ContactService {
     };
 
     constructor() {
-        this.config.initTimestamp = new Date().toLocaleString();
-        console.log('[ContactService] Inicializado correctamente.');
-        console.log(`[ContactService] Versión: ${this.config.version}`);
-        console.log(`[ContactService] Timestamp: ${this.config.initTimestamp}`);
     }
 
     sendContact(data: ContactData): boolean {

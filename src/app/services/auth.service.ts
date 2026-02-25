@@ -14,17 +14,11 @@ export class AuthService {
     constructor() {
         this.initializationTime = new Date().toLocaleString();
 
-        // Simulación de "Carga de datos" en el constructor
-        // Añadimos un usuario de prueba por defecto
         this.registeredUsers.push({
             name: 'Usuario de Prueba',
             email: 'test@fluxa.com',
             password: 'Password123!'
         });
-
-        console.log(`[AuthService] Sistema de autenticación listo.`);
-        console.log(`[AuthService] Inicializado el: ${this.initializationTime}`);
-        console.log(`[AuthService] Usuarios en caché: ${this.registeredUsers.length}`);
     }
 
     get isLoggedIn(): boolean {

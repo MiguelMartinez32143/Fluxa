@@ -10,13 +10,6 @@ export class PlansService {
     private serviceId: string = '';
 
     constructor() {
-        this.serviceId = `PLN-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
-        this.formatOptions = {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        };
-        console.log(`[PlansService] Servicio activo con ID: ${this.serviceId}`);
-        console.log('[PlansService] Configuración de moneda: es-CO');
     }
 
     getPlans(isAnnual: boolean): Plan[] {
