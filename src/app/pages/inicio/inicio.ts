@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-inicio',
@@ -40,28 +41,28 @@ export class Inicio implements AfterViewInit, OnDestroy {
   private observer: IntersectionObserver | null = null;
   private isBrowser: boolean;
 
+
   constructor(
     private el: ElementRef,
-    @Inject(PLATFORM_ID) platformId: Object
+    @Inject(PLATFORM_ID) platformId: Object,
+    private authService: AuthService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
+  /* ----- Auth Message ----- */
+  get authMessage(): string {
+    return this.authService.authMessage;
+  }
+
   /* ----- Password ----- */
   get passwordStrength(): number {
-    const p = this.signupPassword;
-    if (!p) return 0;
-    let score = 0;
-    if (p.length >= 6) score += 20;
-    if (p.length >= 10) score += 15;
-    if (/[A-Z]/.test(p)) score += 20;
-    if (/[0-9]/.test(p)) score += 20;
-    if (/[^A-Za-z0-9]/.test(p)) score += 25;
-    return Math.min(score, 100);
+    return this.authService.calculatePasswordStrength(this.signupPassword);
   }
 
   /* ----- Modal ----- */
   openModal(type: 'login' | 'signup' | 'forgot') {
+    this.authService.authMessage = '';
     this.activeModal = type;
     if (this.isBrowser) {
       document.body.style.overflow = 'hidden';
@@ -80,11 +81,34 @@ export class Inicio implements AfterViewInit, OnDestroy {
   }
 
   handleLogin(): void {
-    if (this.loginEmail && this.loginPassword) {
+    if (this.authService.login(this.loginEmail, this.loginPassword)) {
       this.activeModal = null;
+      this.loginEmail = '';
+      this.loginPassword = '';
       if (this.isBrowser) {
         document.body.style.overflow = '';
       }
+    }
+  }
+
+  handleSignup(): void {
+    if (!this.acceptTerms) return;
+    if (this.authService.signup(this.signupName, this.signupEmail, this.signupPassword, this.signupConfirm)) {
+      this.activeModal = null;
+      this.signupName = '';
+      this.signupEmail = '';
+      this.signupPassword = '';
+      this.signupConfirm = '';
+      this.acceptTerms = false;
+      if (this.isBrowser) {
+        document.body.style.overflow = '';
+      }
+    }
+  }
+
+  handleForgot(): void {
+    if (this.authService.forgotPassword(this.forgotEmail)) {
+      this.forgotEmail = '';
     }
   }
 

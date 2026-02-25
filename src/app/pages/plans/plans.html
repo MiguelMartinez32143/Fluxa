@@ -1,4 +1,3 @@
-<!-- ===== HERO ===== -->
 <section class="page-hero">
     <div class="container">
         <span class="page-badge"><i class="bi bi-credit-card-fill"></i> Planes</span>
@@ -7,100 +6,52 @@
     </div>
 </section>
 
-<!-- ===== TOGGLE ===== -->
 <section class="plans-section">
     <div class="container">
         <div class="billing-toggle">
-            <span class="billing-label active">Mensual</span>
-            <div class="toggle-track">
+            <span class="billing-label" [class.active]="!isAnnual" (click)="toggleBilling(false)">Mensual</span>
+            <div class="toggle-track" [class.active]="isAnnual" (click)="toggleBilling()">
                 <div class="toggle-thumb"></div>
             </div>
-            <span class="billing-label">Anual <span class="billing-save">-20%</span></span>
+            <span class="billing-label" [class.active]="isAnnual" (click)="toggleBilling(true)">Anual <span
+                    class="billing-save">-20%</span></span>
         </div>
 
-        <!-- ===== PRICING CARDS ===== -->
         <div class="row g-4 justify-content-center mt-4">
-            <!-- Básico -->
+            @for (plan of plans; track plan.name) {
             <div class="col-md-6 col-lg-4">
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <span class="plan-icon"><i class="bi bi-rocket"></i></span>
-                        <h3>Básico</h3>
-                        <p class="plan-desc">Para empezar a organizar tus finanzas</p>
-                    </div>
-                    <div class="plan-price">
-                        <span class="plan-currency">$</span>
-                        <span class="plan-amount">0</span>
-                        <span class="plan-period">/mes</span>
-                    </div>
-                    <ul class="plan-features">
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Hasta 50 transacciones/mes</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> 5 categorías personalizadas</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> 1 presupuesto activo</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Reportes básicos</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Soporte por email</li>
-                        <li class="excluded"><i class="bi bi-x-circle"></i> Analytics avanzado</li>
-                        <li class="excluded"><i class="bi bi-x-circle"></i> Exportar reportes</li>
-                        <li class="excluded"><i class="bi bi-x-circle"></i> Soporte prioritario</li>
-                    </ul>
-                    <button class="plan-btn plan-btn-outline">Comenzar Gratis</button>
-                </div>
-            </div>
-
-            <!-- Pro (Popular) -->
-            <div class="col-md-6 col-lg-4">
-                <div class="plan-card plan-card-popular">
+                <div class="plan-card" [class.plan-card-popular]="plan.popular">
+                    @if (plan.popular) {
                     <span class="plan-popular-badge">Más Popular</span>
+                    }
                     <div class="plan-header">
-                        <span class="plan-icon glow"><i class="bi bi-lightning-charge-fill"></i></span>
-                        <h3>Pro</h3>
-                        <p class="plan-desc">Lo mejor para uso personal avanzado</p>
+                        <span class="plan-icon" [class.glow]="plan.popular" [class.accent]="plan.name === 'Familiar'">
+                            <i [class]="plan.icon"></i>
+                        </span>
+                        <h3>{{ plan.name }}</h3>
+                        <p class="plan-desc">{{ plan.description }}</p>
                     </div>
                     <div class="plan-price">
-                        <span class="plan-currency">$</span>
-                        <span class="plan-amount">35.000</span>
-                        <span class="plan-period">/mes</span>
+                        <span class="plan-currency">{{ plan.currency }}</span>
+                        <span class="plan-amount">{{ plan.priceFormatted }}</span>
+                        <span class="plan-period">{{ plan.period }}</span>
                     </div>
                     <ul class="plan-features">
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Transacciones ilimitadas</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Categorías ilimitadas</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Presupuestos ilimitados</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Analytics avanzado</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Exportar PDF/Excel</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Recordatorios inteligentes</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Sin publicidad</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Soporte prioritario</li>
+                        @for (feature of plan.features; track feature.text) {
+                        <li [class.included]="feature.included" [class.excluded]="!feature.included">
+                            <i class="bi" [class.bi-check-circle-fill]="feature.included"
+                                [class.bi-x-circle]="!feature.included"></i>
+                            {{ feature.text }}
+                        </li>
+                        }
                     </ul>
-                    <button class="plan-btn plan-btn-primary">Empezar Prueba 14 días</button>
+                    <button class="plan-btn" [class.plan-btn-primary]="plan.buttonStyle === 'primary'"
+                        [class.plan-btn-outline]="plan.buttonStyle === 'outline'">
+                        {{ plan.buttonText }}
+                    </button>
                 </div>
             </div>
-
-            <!-- Familiar -->
-            <div class="col-md-6 col-lg-4">
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <span class="plan-icon accent"><i class="bi bi-people-fill"></i></span>
-                        <h3>Familiar</h3>
-                        <p class="plan-desc">Finanzas compartidas para toda la familia</p>
-                    </div>
-                    <div class="plan-price">
-                        <span class="plan-currency">$</span>
-                        <span class="plan-amount">90.000</span>
-                        <span class="plan-period">/mes</span>
-                    </div>
-                    <ul class="plan-features">
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Todo de Pro incluido</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Hasta 5 usuarios</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Presupuestos compartidos</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Permisos granulares</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Dashboard familiar</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Soporte premium 24/7</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> Onboarding personalizado</li>
-                        <li class="included"><i class="bi bi-check-circle-fill"></i> API para integraciones</li>
-                    </ul>
-                    <button class="plan-btn plan-btn-outline">Comenzar</button>
-                </div>
-            </div>
+            }
         </div>
 
         <p class="plans-note text-center mt-4">Todos los planes incluyen 14 días de prueba gratis. Cancela cuando
@@ -108,7 +59,6 @@
     </div>
 </section>
 
-<!-- ===== COMPARISON TABLE ===== -->
 <section class="comparison-section">
     <div class="container">
         <h2 class="section-title text-center">Compara todos los planes</h2>

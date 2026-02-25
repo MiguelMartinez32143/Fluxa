@@ -2,6 +2,7 @@ import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -33,7 +34,10 @@ export class HeaderComponent {
   /* Forgot field */
   forgotEmail = '';
 
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) platformId: Object,
+    private authService: AuthService
+  ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -41,33 +45,31 @@ export class HeaderComponent {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
+  /* Auth Message */
+  get authMessage(): string {
+    return this.authService.authMessage;
+  }
+
   /* Password strength */
   get passwordStrength(): number {
-    const p = this.signupPassword;
-    if (!p) return 0;
-    let score = 0;
-    if (p.length >= 6) score += 20;
-    if (p.length >= 10) score += 15;
-    if (/[A-Z]/.test(p)) score += 20;
-    if (/[0-9]/.test(p)) score += 20;
-    if (/[^A-Za-z0-9]/.test(p)) score += 25;
-    return Math.min(score, 100);
+    return this.authService.calculatePasswordStrength(this.signupPassword);
   }
 
   /* Modal methods */
   openModal(type: 'login' | 'signup' | 'forgot') {
+    this.authService.authMessage = '';
     this.activeModal = type;
     if (this.isBrowser) document.body.style.overflow = 'hidden';
   }
 
   closeModal(event: MouseEvent) {
     if ((event.target as HTMLElement).classList.contains('modal-overlay')) {
-      this.activeModal = null;
-      if (this.isBrowser) document.body.style.overflow = '';
+      this.dismissModal();
     }
   }
 
   switchModal(type: 'login' | 'signup' | 'forgot') {
+    this.authService.authMessage = '';
     this.activeModal = type;
   }
 
@@ -77,9 +79,28 @@ export class HeaderComponent {
   }
 
   handleLogin(): void {
-    if (this.loginEmail && this.loginPassword) {
+    if (this.authService.login(this.loginEmail, this.loginPassword)) {
+      this.loginEmail = '';
+      this.loginPassword = '';
       this.dismissModal();
-      // TODO: integrate AuthService
+    }
+  }
+
+  handleSignup(): void {
+    if (!this.acceptTerms) return;
+    if (this.authService.signup(this.signupName, this.signupEmail, this.signupPassword, this.signupConfirm)) {
+      this.signupName = '';
+      this.signupEmail = '';
+      this.signupPassword = '';
+      this.signupConfirm = '';
+      this.acceptTerms = false;
+      this.dismissModal();
+    }
+  }
+
+  handleForgot(): void {
+    if (this.authService.forgotPassword(this.forgotEmail)) {
+      this.forgotEmail = '';
     }
   }
 }

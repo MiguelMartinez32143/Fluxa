@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { ContactService } from '../../services/contact.service';
+import { ContactData } from '../../models/contact.model';
 
 @Component({
   selector: 'app-contact',
@@ -14,7 +16,8 @@ export class Contact {
   submitted = false;
   showSuccess = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private contactService: ContactService) {
+    console.log('Contact Component initialized');
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -28,19 +31,14 @@ export class Contact {
   onSubmit() {
     this.submitted = true;
     if (this.contactForm.valid) {
-      const entry = this.contactForm.value;
-      const blob = new Blob([JSON.stringify(entry, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'contacto.json';
-      a.click();
-      URL.revokeObjectURL(url);
+      const data: ContactData = this.contactForm.value;
 
-      this.showSuccess = true;
-      this.contactForm.reset();
-      this.submitted = false;
-      setTimeout(() => this.showSuccess = false, 4000);
+      if (this.contactService.sendContact(data)) {
+        this.showSuccess = true;
+        this.contactForm.reset();
+        this.submitted = false;
+        setTimeout(() => this.showSuccess = false, 4000);
+      }
     }
   }
 }

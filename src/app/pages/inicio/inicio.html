@@ -604,17 +604,19 @@
         <form (submit)="$event.preventDefault(); handleLogin()">
             <div class="input-group-custom">
                 <i class="bi bi-envelope"></i>
-                <input type="email" placeholder="Correo electrónico" [(ngModel)]="loginEmail" name="loginEmail"
-                    required />
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="loginEmail" name="loginEmail" />
             </div>
             <div class="input-group-custom">
                 <i class="bi bi-lock"></i>
                 <input [type]="showLoginPass ? 'text' : 'password'" placeholder="Contraseña" [(ngModel)]="loginPassword"
-                    name="loginPassword" required />
+                    name="loginPassword" />
                 <button type="button" class="input-toggle" (click)="showLoginPass = !showLoginPass">
                     <i class="bi" [ngClass]="showLoginPass ? 'bi-eye-slash' : 'bi-eye'"></i>
                 </button>
             </div>
+            @if (authMessage) {
+            <small class="text-danger-custom d-block mb-2" style="font-size:.8rem">{{ authMessage }}</small>
+            }
             <div class="modal-extras">
                 <label class="modal-checkbox"><input type="checkbox" /> Recordarme</label>
                 <a (click)="switchModal('forgot')">¿Olvidaste contraseña?</a>
@@ -639,20 +641,19 @@
     <div class="modal-card" (click)="$event.stopPropagation()">
         <button class="modal-close" (click)="activeModal = null">&times;</button>
         <h2 class="modal-title">Crea tu cuenta gratis</h2>
-        <form (submit)="$event.preventDefault()">
+        <form (submit)="$event.preventDefault(); handleSignup()">
             <div class="input-group-custom">
                 <i class="bi bi-person"></i>
-                <input type="text" placeholder="Nombre completo" [(ngModel)]="signupName" name="signupName" required />
+                <input type="text" placeholder="Nombre completo" [(ngModel)]="signupName" name="signupName" />
             </div>
             <div class="input-group-custom">
                 <i class="bi bi-envelope"></i>
-                <input type="email" placeholder="Correo electrónico" [(ngModel)]="signupEmail" name="signupEmail"
-                    required />
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="signupEmail" name="signupEmail" />
             </div>
             <div class="input-group-custom">
                 <i class="bi bi-lock"></i>
                 <input [type]="showSignupPass ? 'text' : 'password'" placeholder="Contraseña"
-                    [(ngModel)]="signupPassword" name="signupPassword" required />
+                    [(ngModel)]="signupPassword" name="signupPassword" />
                 <button type="button" class="input-toggle" (click)="showSignupPass = !showSignupPass">
                     <i class="bi" [ngClass]="showSignupPass ? 'bi-eye-slash' : 'bi-eye'"></i>
                 </button>
@@ -673,7 +674,7 @@
             <div class="input-group-custom">
                 <i class="bi bi-lock-fill"></i>
                 <input [type]="showSignupPass ? 'text' : 'password'" placeholder="Confirmar contraseña"
-                    [(ngModel)]="signupConfirm" name="signupConfirm" required />
+                    [(ngModel)]="signupConfirm" name="signupConfirm" />
             </div>
             @if (signupConfirm && signupPassword !== signupConfirm) {
             <small class="text-danger-custom d-block mb-2" style="font-size:.8rem">Las contraseñas no
@@ -683,6 +684,9 @@
                 <input type="checkbox" [(ngModel)]="acceptTerms" name="acceptTerms" />
                 Acepto los <a href="#">términos y condiciones</a>
             </label>
+            @if (authMessage) {
+            <small class="text-danger-custom d-block mb-2" style="font-size:.8rem">{{ authMessage }}</small>
+            }
             <button type="submit" class="btn btn-primary-glow w-100" [disabled]="!acceptTerms">Crear Cuenta
                 Gratis</button>
         </form>
@@ -708,12 +712,14 @@
         </div>
         <h2 class="modal-title text-center">¿Olvidaste tu contraseña?</h2>
         <p class="modal-subtitle text-center">Te enviaremos instrucciones para restablecerla.</p>
-        <form (submit)="$event.preventDefault()">
+        <form (submit)="$event.preventDefault(); handleForgot()">
             <div class="input-group-custom">
                 <i class="bi bi-envelope"></i>
-                <input type="email" placeholder="Correo electrónico" [(ngModel)]="forgotEmail" name="forgotEmail"
-                    required />
+                <input type="email" placeholder="Correo electrónico" [(ngModel)]="forgotEmail" name="forgotEmail" />
             </div>
+            @if (authMessage) {
+            <small class="d-block mb-2" style="font-size:.8rem; color: var(--accent)">{{ authMessage }}</small>
+            }
             <button type="submit" class="btn btn-primary-glow w-100">Enviar Instrucciones</button>
         </form>
         <p class="modal-footer-text text-center mt-3">
