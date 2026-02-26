@@ -66,6 +66,37 @@
     line-height: 1.7;
 }
 
+/* ===== SHOW PLANS BUTTON ===== */
+.show-plans-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #3B82F6, #818CF8);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.show-plans-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
+}
+
+.show-plans-btn:active {
+    transform: translateY(0);
+}
+
+.show-plans-btn i {
+    font-size: 1.1rem;
+}
+
 .section-title {
     font-family: 'Outfit', sans-serif;
     font-size: clamp(1.6rem, 3vw, 2.2rem);

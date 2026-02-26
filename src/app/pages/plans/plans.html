@@ -3,9 +3,17 @@
         <span class="page-badge"><i class="bi bi-credit-card-fill"></i> Planes</span>
         <h1 class="page-title">El plan perfecto para <span class="text-gradient">cada necesidad</span></h1>
         <p class="page-subtitle">Comienza gratis y escala cuando quieras. Sin compromiso, sin letra pequeña.</p>
+
+        <!-- Botón para mostrar/ocultar los planes -->
+        <button class="show-plans-btn" (click)="togglePlans()">
+            <i class="bi" [class.bi-eye-fill]="!showPlans" [class.bi-eye-slash-fill]="showPlans"></i>
+            {{ showPlans ? 'Ocultar Planes' : 'Ver Planes' }}
+        </button>
     </div>
 </section>
 
+<!-- Los planes solo se muestran cuando showPlans es true -->
+@if (showPlans) {
 <section class="plans-section">
     <div class="container">
         <div class="billing-toggle">
@@ -120,3 +128,4 @@
         </div>
     </div>
 </section>
+}
